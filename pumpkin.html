@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《南瓜掌心雷》故事志工導讀簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0;height:100%;background:#1b1714;overflow:hidden;font-family:'Noto Sans TC',system-ui,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#stage > section{position:absolute;inset:0;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden;display:none !important}
+#stage > section.on{display:flex !important}
+#stage > section aside{display:none}
+.ctrl{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(20,16,14,.82);color:#eee;font-size:14px;z-index:5;transition:opacity .3s}
+.ctrl.hide{opacity:0}
+.ctrl:hover{opacity:1}
+.ctrl a,.ctrl button{font:inherit;color:#eee;background:rgba(255,255,255,.1);border:0;border-radius:6px;padding:6px 12px;cursor:pointer;text-decoration:none}
+.ctrl button:hover,.ctrl a:hover{background:rgba(255,255,255,.22)}
+.ctrl .count{min-width:64px;text-align:center}
+.ctrl .sp{flex:1}
+#notes{position:fixed;left:0;right:0;bottom:48px;max-height:38vh;overflow:auto;background:#FBF8F1;color:#2B2420;padding:16px 20px;font-size:17px;line-height:1.7;border-top:4px solid #E3B23C;display:none;z-index:4}
+#notes.show{display:block}
+#notes b{display:block;font-size:13px;color:#8A6A50;margin-bottom:4px}
+.help{color:#aaa;font-size:12px}
+@media (max-width:700px){.help{display:none}}
+</style>
+<style>
+:root {
+  --ink: #2A2238;
+  --paper: #F8F2E7;
+  --paper2: #EDE3D2;
+  --accent: #9E4A12;
+  --hi: #F4B942;
+  --soft: #544B5E;
+  --softdark: #D6CFE0;
+  --onaccent: #FBEFE4;
+}
+#stage > section {
+  padding: 128px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+#stage > section.alt { background: var(--paper2); }
+#stage > section.dark { background: var(--ink); color: var(--paper); }
+#stage > section.accent { background: var(--accent); color: var(--paper); }
+
+h1, h2, h3 { font-family: 'Noto Serif TC', Georgia, serif; margin: 0; }
+h1 { font-size: 112px; font-weight: 900; line-height: 1.15; }
+h2 { font-size: 64px; font-weight: 700; line-height: 1.2; margin-bottom: 48px; }
+h3 { font-size: 40px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+p { margin: 0; font-size: 30px; line-height: 1.6; color: var(--soft); }
+#stage > section.dark p { color: var(--softdark); }
+#stage > section.accent p { color: var(--onaccent); }
+
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; }
+#stage > section.dark .eyebrow { color: var(--hi); }
+#stage > section.accent .eyebrow { color: var(--onaccent); }
+
+.lead { font-size: 40px; line-height: 1.5; color: var(--ink); }
+#stage > section.dark .lead { color: var(--paper); }
+#stage > section.accent .lead { color: var(--onaccent); }
+
+.row { display: flex; flex-direction: row; gap: 40px; }
+.col { display: flex; flex-direction: column; gap: 24px; flex: 1; }
+.card { flex: 1; background: var(--paper); border: 3px solid var(--ink); border-radius: 8px; padding: 44px; }
+#stage > section.paperbg .card { background: var(--paper); border-color: var(--paper); }
+.card.side { flex: 0 0 520px; background: var(--paper2); border-color: var(--paper2); }
+.card .tag { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+.card p { font-size: 28px; }
+.card .num { font-family: 'Noto Serif TC', Georgia, serif; font-size: 56px; font-weight: 900; color: var(--accent); line-height: 1.1; margin-bottom: 16px; }
+
+ul.list { margin: 0; padding-left: 40px; }
+ul.list li { font-size: 30px; line-height: 1.6; color: var(--soft); margin-bottom: 14px; }
+
+table.info { border-collapse: collapse; width: 100%; }
+table.info th, table.info td { font-size: 30px; text-align: left; padding: 18px 24px; border-bottom: 2px solid var(--paper2); }
+table.info th { color: var(--accent); font-weight: 700; width: 300px; }
+table.info th.v { color: var(--ink); width: auto; }
+table.info td { color: var(--ink); }
+table.info td.lbl { color: var(--accent); font-weight: 700; }
+
+.timeline { display: flex; flex-direction: row; }
+.step { flex: 1; padding: 40px 36px; border: 3px solid var(--ink); border-left: none; background: var(--paper); }
+.step.first { border-left: 3px solid var(--ink); }
+.step .min { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 16px; }
+.step .unit { font-size: 24px; color: var(--soft); margin-bottom: 20px; }
+.step p { font-size: 28px; }
+
+.quote { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 700; line-height: 1.4; }
+#stage > section.accent .quote, #stage > section.dark .quote { color: var(--paper); }
+.bar { width: 120px; height: 8px; background: var(--hi); margin-bottom: 40px; }
+.spacer { flex: 1; }
+.foot { font-size: 24px; color: var(--soft); }
+#stage > section.dark .foot { color: var(--softdark); }
+
+.qgroup .card { border-top: 12px solid var(--accent); }
+.qgroup .card .q { font-size: 28px; margin-bottom: 18px; color: var(--ink); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+.card, .step { animation: rise 0.5s ease-out both; }
+.row > .card:nth-child(2), .timeline > .step:nth-child(2) { animation-delay: 0.12s; }
+.row > .card:nth-child(3), .timeline > .step:nth-child(3) { animation-delay: 0.24s; }
+.timeline > .step:nth-child(4) { animation-delay: 0.36s; }
+.catsvg { position: absolute; }
+
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="cover" class="dark">
+<p class="eyebrow">國小故事志工・導讀簡報</p><h1>南瓜<br>掌心雷</h1><div class="bar" style="margin-top:48px"></div><p class="lead" style="width:1000px">看不到、摸不到，<br>卻能讓丁丁變勇敢的魔法。</p><div class="spacer"></div><p class="foot">文｜英格麗特．奧斯特海倫　圖｜克莉絲塔．溫茨內爾　譯｜陳木城　阿爾發</p><svg class="catsvg" style="right:128px;top:240px;width:520px;height:520px" viewBox="0 0 200 200" aria-label="一顆半透明、帶著笑臉的黃色南瓜，下方是一隻張開的手掌"><path fill="#F4B942" fill-opacity="0.85" d="M100 50c-30-6-70 6-72 46-2 40 30 58 72 58s74-18 72-58c-2-40-42-52-72-46z"/><path d="M100 52 v100 M70 56 q-14 46 0 94 M130 56 q14 46 0 94" stroke="#C98A1E" stroke-width="3" fill="none"/><path fill="#6E8B3D" d="M96 52 q2-18 14-22 l3 6 q-9 4-10 16z"/><g fill="#2A2238"><circle cx="78" cy="94" r="7"/><circle cx="122" cy="94" r="7"/><path d="M78 118 q22 18 44 0" stroke="#2A2238" stroke-width="5" fill="none"/></g><path fill="#E9D8C0" d="M40 196 q0-26 18-30 h84 q18 4 18 30 z"/></svg>
+<aside>開場：這份簡報是給故事志工的備課導讀，不是直接放給孩子看的。先帶大家認識書，再談怎麼進教室說。</aside>
+</section>
+
+<section id="bookinfo">
+<p class="eyebrow">認識這本書</p><h2>書籍小檔案</h2><table class="info"><tr><th>書名</th><th class="v">南瓜掌心雷</th></tr><tr><td class="lbl">文</td><td>英格麗特．奧斯特海倫</td></tr><tr><td class="lbl">圖</td><td>克莉絲塔．溫茨內爾（Christa Unzner）</td></tr><tr><td class="lbl">譯者</td><td>陳木城（翻譯家、兒童詩人）</td></tr><tr><td class="lbl">出版</td><td>阿爾發國際文化，2011 年</td></tr><tr><td class="lbl">取得方式</td><td>已絕版，請提早向學校或公共圖書館借閱</td></tr></table>
+<aside>這本書已經絕版，書店買不到。請志工至少提前兩週向圖書館預約，或詢問學校圖書室是否有館藏。</aside>
+</section>
+
+<section id="author" class="alt paperbg">
+<p class="eyebrow">認識這本書</p><h2>作者與繪者</h2><div class="row"><div class="card"><p class="num">1940</p><h3>英格麗特</h3><p>生於德國慕尼黑，當過記者和旅行作家。應女兒要求寫下故事，從此開始創作童書，作品多有 8 到 10 種語言版本。</p></div><div class="card"><p class="num">1958</p><h3>克莉絲塔</h3><p>生於德國柏林，學平面設計，1982 年成為自由插畫家，出版的童書超過 120 本。</p></div><div class="card"><p class="num">畫法</p><h3>沾水筆加水彩</h3><p>用沾水筆素描再上水彩，每個人物、甚至小動物，都有豐富的表情。</p></div></div>
+<aside>可以告訴孩子：這個故事一開始，是媽媽寫給女兒聽的。</aside>
+</section>
+
+<section id="story">
+<p class="eyebrow">認識這本書</p><h2>故事大綱</h2><div class="timeline"><div class="step first"><p class="min">1</p><h3>怕怕的丁丁</h3><p>丁丁怕老師、不敢跟大孩子說話，闖了禍就趕緊逃走。</p></div><div class="step"><p class="min">2</p><h3>仙子的禮物</h3><p>有一天，他夢見仙子送他一個看不到、摸不到，卻會保護他的「南瓜掌心雷」。</p></div><div class="step"><p class="min">3</p><h3>相信的力量</h3><p>丁丁完全相信掌心雷的力量，越來越勇敢，不知不覺克服了心裡的害怕。</p></div></div><div class="spacer"></div><p class="foot">故事細節請以原書為準，志工務必事先完整讀過。</p>
+<aside>這本書和《阿蓮娜、老鼠和巨貓》都在談「面對害怕」，可以安排在相近的週次，讓孩子比較兩個主角怎麼變勇敢。</aside>
+</section>
+
+<section id="characters" class="alt paperbg">
+<p class="eyebrow">認識這本書</p><h2>主要角色</h2><div class="row"><div class="card"><p class="tag">主角</p><h3>丁丁</h3><p>膽小的小男孩，面對老師、大孩子和闖禍時都會害怕。</p></div><div class="card"><p class="tag">法寶</p><h3>南瓜掌心雷</h3><p>透明的黃色南瓜，會隨丁丁害怕的對象，換上不同的臉孔和表情。</p></div><div class="card"><p class="tag">送禮的人</p><h3>仙子</h3><p>出現在丁丁的夢裡，送給他這份看不見的禮物。</p></div></div>
+<aside>可以問孩子：掌心雷到底是真的還是假的？讓孩子各自說說看，不必給標準答案。</aside>
+</section>
+
+<section id="theme" class="accent">
+<p class="eyebrow">讀懂這本書</p><p class="quote" style="width:1500px">掌心雷看不到，也摸不到；<br>給丁丁力量的，其實是他自己的心。</p><div class="bar" style="margin-top:48px"></div><p class="lead">相信自己做得到，就是最厲害的魔法。</p>
+<aside>本書真實呈現孩子面對人際互動時的害怕，並用想像力引導孩子坦然面對。重點是：勇氣來自相信自己。</aside>
+</section>
+
+<section id="art">
+<p class="eyebrow">讀懂這本書</p><h2>翻頁時，帶孩子看這三件事</h2><div class="row"><div class="card"><p class="num">01</p><h3>豐富的表情</h3><p>沾水筆線條加水彩，每個人物、連小動物都有表情，請孩子找找看。</p></div><div class="card"><p class="num">02</p><h3>會變臉的南瓜</h3><p>透明南瓜會隨丁丁害怕的對象換表情，每次出現都停下來看。</p></div><div class="card"><p class="num">03</p><h3>丁丁怕什麼</h3><p>請孩子指出丁丁每一次害怕的是誰或什麼。</p></div></div>
+<aside>會變臉的南瓜是這本書最有趣的地方，可以讓孩子模仿南瓜的表情。</aside>
+</section>
+
+<section id="flow" class="alt">
+<p class="eyebrow">帶進教室</p><h2>一堂 40 分鐘的建議流程</h2><div class="timeline"><div class="step first"><p class="min">5</p><p class="unit">分鐘</p><h3>暖身</h3><p>猜猜「我的手心藏著什麼」。</p></div><div class="step"><p class="min">15</p><p class="unit">分鐘</p><h3>說故事</h3><p>每次用掌心雷，全班一起做動作。</p></div><div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>討論</h3><p>從理解、感受到生活連結，三層提問。</p></div><div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>延伸</h3><p>畫出「我的掌心雷」。</p></div></div>
+<aside>晨光時間只有 20–30 分鐘的話：暖身縮成 2 分鐘、討論挑 2–3 題、延伸活動改成口頭分享或留給導師。</aside>
+</section>
+
+<section id="warmup">
+<p class="eyebrow">帶進教室・暖身</p><h2>「我的手心藏著什麼？」</h2><div class="row"><div class="col"><p class="lead">志工握拳說：「我手裡有一個看不到的寶物。」請孩子猜猜看。</p><ul class="list"><li>打開手：「看不到吧？但它真的很厲害喔！」</li><li>問：如果你有一個隱形法寶，你希望它幫你什麼？</li><li>收：「今天的主角丁丁，也得到了一個隱形法寶……」</li></ul></div><div class="card side"><p class="tag">小道具（可選）</p><h3>一顆小南瓜</h3><p>拿出南瓜或南瓜圖卡：「今天的法寶，跟它有關係喔！」</p></div></div>
+<aside>孩子可能會說出很誇張的法寶，順著想像力笑一笑，再帶回「幫助自己」的方向。</aside>
+</section>
+
+<section id="telling" class="alt paperbg">
+<p class="eyebrow">帶進教室・說故事</p><h2>說故事的四個小技巧</h2><div class="row" style="margin-bottom:40px"><div class="card"><h3>用動作做掌心雷</h3><p>丁丁每次使用時，志工握拳再張開，邀孩子一起做。</p></div><div class="card"><h3>兩種聲音</h3><p>害怕時聲音小、發抖；用了掌心雷後，聲音穩、站得挺。</p></div></div><div class="row"><div class="card"><h3>讓孩子預測</h3><p>「這次丁丁會用掌心雷嗎？會發生什麼事？」</p></div><div class="card"><h3>看南瓜的臉</h3><p>南瓜出現時停下來，讓孩子說說它現在是什麼表情。</p></div></div>
+<aside>出版社建議 3 歲以上，對國小低年級來說很容易進入；中年級可以多談「勇氣從哪裡來」。</aside>
+</section>
+
+<section id="questions">
+<p class="eyebrow">帶進教室・討論</p><h2>三層提問</h2><div class="row qgroup"><div class="card"><p class="tag">理解｜發生了什麼</p><p class="q">丁丁害怕哪些人或事？</p><p class="q">仙子送他什麼？看得到嗎？</p><p class="q">後來丁丁有什麼改變？</p></div><div class="card"><p class="tag">感受｜角色心裡想什麼</p><p class="q">丁丁闖禍後逃走，他心裡在想什麼？</p><p class="q">握著掌心雷時，他有什麼感覺？</p></div><div class="card"><p class="tag">連結｜回到自己身上</p><p class="q">你在學校有沒有會怕的事？</p><p class="q">沒有魔法的時候，什麼能給你勇氣？</p></div></div>
+<aside>「闖禍就逃走」可以延伸討論：勇敢也包括承認錯誤、說對不起。</aside>
+</section>
+
+<section id="activity" class="alt paperbg">
+<p class="eyebrow">帶進教室・延伸活動</p><h2>我的南瓜掌心雷</h2><div class="row"><div class="card"><p class="tag">低年級</p><h3>畫出我的法寶</h3><p>描出自己的手掌，在手心畫上自己的隱形法寶，替它取名字。</p></div><div class="card"><p class="tag">中年級</p><h3>勇氣小劇場</h3><p>兩人一組，演出「不敢跟大孩子說話」等情境，練習用一句話開口。</p></div><div class="card"><p class="tag">全班</p><h3>勇氣手勢</h3><p>全班約定一個握拳再張開的手勢，害怕時對自己做一次。</p></div></div>
+<aside>勇氣小劇場的情境可以由孩子提出，但避免演出班上真實發生的衝突。</aside>
+</section>
+
+<section id="reminders">
+<p class="eyebrow">志工提醒</p><h2>上場前，記得這四件事</h2><div class="row" style="margin-bottom:40px"><div class="card"><h3>提早借書</h3><p>本書已絕版，至少提前兩週向圖書館預約。</p></div><div class="card"><h3>不是武器</h3><p>名字有「雷」，提醒孩子掌心雷是保護自己的，不是拿來「攻擊」同學。</p></div></div><div class="row"><div class="card"><h3>尊重害怕</h3><p>不笑孩子怕的東西，每個人怕的都不一樣。</p></div><div class="card"><h3>可搭配閱讀</h3><p>與《阿蓮娜、老鼠和巨貓》主題相近，可排在前後週。</p></div></div>
+<aside>下課後可能會有孩子互相「發射掌心雷」，可以事先跟導師說明這個手勢的意義。</aside>
+</section>
+
+<section id="closing" class="dark">
+<p class="eyebrow">結語</p><p class="quote" style="width:1300px">每個孩子的手心裡，<br>都可以有一顆南瓜掌心雷。</p><div class="spacer"></div><p class="foot">資料來源：小書蟲童書坊、讀冊生活書籍介紹</p>
+<aside>收尾時可以把書闔上、停一秒，再說這句話。謝謝各位志工！</aside>
+</section>
+
+</div>
+<div id="notes"><b>講者備註</b><div id="notesText"></div></div>
+<div class="ctrl" id="bar">
+  <a href="../index.html">← 書架</a>
+  <button id="prev" aria-label="上一頁">‹</button>
+  <span class="count" id="count"></span>
+  <button id="next" aria-label="下一頁">›</button>
+  <button id="nbtn">備註</button>
+  <button id="fs">全螢幕</button>
+  <span class="sp"></span>
+  <span class="help">← → 翻頁・N 備註・F 全螢幕</span>
+</div>
+<script>
+const slides=[...document.querySelectorAll('#stage > section')];
+const stage=document.getElementById('stage');
+let i=0;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`;}
+function show(n,push){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+  const a=slides[i].querySelector('aside');
+  document.getElementById('notesText').textContent=a?a.textContent:'（本頁沒有備註）';
+  if(push!==false){try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+}
+function go(d){show(i+d)}
+document.getElementById('prev').onclick=()=>go(-1);
+document.getElementById('next').onclick=()=>go(1);
+const notes=document.getElementById('notes');
+document.getElementById('nbtn').onclick=()=>notes.classList.toggle('show');
+function fsToggle(){try{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}catch(e){}}
+document.getElementById('fs').onclick=fsToggle;
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(1)}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(-1)}
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='n'||e.key==='N')notes.classList.toggle('show');
+  else if(e.key==='f'||e.key==='F')fsToggle();
+});
+stage.addEventListener('click',e=>{const r=stage.getBoundingClientRect();go(e.clientX<r.left+r.width/3?-1:1)});
+let sx=null;
+addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);sx=null});
+let t;const bar=document.getElementById('bar');
+addEventListener('mousemove',()=>{bar.classList.remove('hide');clearTimeout(t);t=setTimeout(()=>bar.classList.add('hide'),2500)});
+addEventListener('resize',fit);
+fit();
+const h=parseInt(location.hash.slice(1));show(isNaN(h)?0:h-1,false);
+</script>
+</body>
+</html>

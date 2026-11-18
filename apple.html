@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《畢老師的蘋果》故事志工導讀簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0;height:100%;background:#1b1714;overflow:hidden;font-family:'Noto Sans TC',system-ui,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#stage > section{position:absolute;inset:0;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden;display:none !important}
+#stage > section.on{display:flex !important}
+#stage > section aside{display:none}
+.ctrl{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(20,16,14,.82);color:#eee;font-size:14px;z-index:5;transition:opacity .3s}
+.ctrl.hide{opacity:0}
+.ctrl:hover{opacity:1}
+.ctrl a,.ctrl button{font:inherit;color:#eee;background:rgba(255,255,255,.1);border:0;border-radius:6px;padding:6px 12px;cursor:pointer;text-decoration:none}
+.ctrl button:hover,.ctrl a:hover{background:rgba(255,255,255,.22)}
+.ctrl .count{min-width:64px;text-align:center}
+.ctrl .sp{flex:1}
+#notes{position:fixed;left:0;right:0;bottom:48px;max-height:38vh;overflow:auto;background:#FBF8F1;color:#2B2420;padding:16px 20px;font-size:17px;line-height:1.7;border-top:4px solid #E3B23C;display:none;z-index:4}
+#notes.show{display:block}
+#notes b{display:block;font-size:13px;color:#8A6A50;margin-bottom:4px}
+.help{color:#aaa;font-size:12px}
+@media (max-width:700px){.help{display:none}}
+</style>
+<style>
+:root {
+  --ink: #23302B;
+  --paper: #F7F2E8;
+  --paper2: #E8E0CF;
+  --accent: #A8322A;
+  --hi: #E9C46A;
+  --soft: #4F5A54;
+  --softdark: #CFD8D2;
+  --onaccent: #F7ECE6;
+}
+#stage > section {
+  padding: 128px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+#stage > section.alt { background: var(--paper2); }
+#stage > section.dark { background: var(--ink); color: var(--paper); }
+#stage > section.accent { background: var(--accent); color: var(--paper); }
+
+h1, h2, h3 { font-family: 'Noto Serif TC', Georgia, serif; margin: 0; }
+h1 { font-size: 112px; font-weight: 900; line-height: 1.15; }
+h2 { font-size: 64px; font-weight: 700; line-height: 1.2; margin-bottom: 48px; }
+h3 { font-size: 40px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+p { margin: 0; font-size: 30px; line-height: 1.6; color: var(--soft); }
+#stage > section.dark p { color: var(--softdark); }
+#stage > section.accent p { color: var(--onaccent); }
+
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; }
+#stage > section.dark .eyebrow { color: var(--hi); }
+#stage > section.accent .eyebrow { color: var(--onaccent); }
+
+.lead { font-size: 40px; line-height: 1.5; color: var(--ink); }
+#stage > section.dark .lead { color: var(--paper); }
+#stage > section.accent .lead { color: var(--onaccent); }
+
+.row { display: flex; flex-direction: row; gap: 40px; }
+.col { display: flex; flex-direction: column; gap: 24px; flex: 1; }
+.card { flex: 1; background: var(--paper); border: 3px solid var(--ink); border-radius: 8px; padding: 44px; }
+#stage > section.paperbg .card { background: var(--paper); border-color: var(--paper); }
+.card.side { flex: 0 0 520px; background: var(--paper2); border-color: var(--paper2); }
+.card .tag { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+.card p { font-size: 28px; }
+.card .num { font-family: 'Noto Serif TC', Georgia, serif; font-size: 56px; font-weight: 900; color: var(--accent); line-height: 1.1; margin-bottom: 16px; }
+
+ul.list { margin: 0; padding-left: 40px; }
+ul.list li { font-size: 30px; line-height: 1.6; color: var(--soft); margin-bottom: 14px; }
+
+table.info { border-collapse: collapse; width: 100%; }
+table.info th, table.info td { font-size: 30px; text-align: left; padding: 18px 24px; border-bottom: 2px solid var(--paper2); }
+table.info th { color: var(--accent); font-weight: 700; width: 300px; }
+table.info th.v { color: var(--ink); width: auto; }
+table.info td { color: var(--ink); }
+table.info td.lbl { color: var(--accent); font-weight: 700; }
+
+.timeline { display: flex; flex-direction: row; }
+.step { flex: 1; padding: 40px 36px; border: 3px solid var(--ink); border-left: none; background: var(--paper); }
+.step.first { border-left: 3px solid var(--ink); }
+.step .min { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 900; color: var(--accent); line-height: 1; margin-bottom: 16px; }
+.step .unit { font-size: 24px; color: var(--soft); margin-bottom: 20px; }
+.step p { font-size: 28px; }
+
+.quote { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 700; line-height: 1.4; }
+#stage > section.accent .quote, #stage > section.dark .quote { color: var(--paper); }
+.bar { width: 120px; height: 8px; background: var(--hi); margin-bottom: 40px; }
+.spacer { flex: 1; }
+.foot { font-size: 24px; color: var(--soft); }
+#stage > section.dark .foot { color: var(--softdark); }
+
+.qgroup .card { border-top: 12px solid var(--accent); }
+.qgroup .card .q { font-size: 28px; margin-bottom: 18px; color: var(--ink); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+.card, .step { animation: rise 0.5s ease-out both; }
+.row > .card:nth-child(2), .timeline > .step:nth-child(2) { animation-delay: 0.12s; }
+.row > .card:nth-child(3), .timeline > .step:nth-child(3) { animation-delay: 0.24s; }
+.timeline > .step:nth-child(4) { animation-delay: 0.36s; }
+.catsvg { position: absolute; }
+
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="cover" class="dark">
+<p class="eyebrow">國小故事志工・導讀簡報</p><h1>畢老師的<br>蘋果</h1><div class="bar" style="margin-top:48px"></div><p class="lead" style="width:1000px">一句沒有求證的話，<br>像羽毛一樣飛遍整個村子。</p><div class="spacer"></div><p class="foot">文｜瑪丹娜（Madonna）　圖｜羅倫（Loren Long）　譯｜蔡依林　格林文化</p><svg class="catsvg" style="right:128px;top:240px;width:520px;height:520px" viewBox="0 0 200 200" aria-label="一顆紅蘋果和幾根飄散的羽毛"><path fill="#C8463C" d="M100 62c-18-14-58-10-62 30-4 40 26 78 46 78 8 0 10-4 16-4s8 4 16 4c20 0 50-38 46-78-4-40-44-44-62-30z"/><path fill="#5C8A4A" d="M104 60c4-18 18-28 34-28-2 16-16 28-34 28z"/><path stroke="#3B2A20" stroke-width="4" d="M100 64 L96 40" fill="none"/><g fill="none" stroke="#F2E6D0" stroke-width="3" opacity="0.9"><path d="M30 40 q12 -10 24 0"/><path d="M160 150 q10 -12 22 -2"/><path d="M20 140 q8 -14 20 -6"/></g></svg>
+<aside>開場：這份簡報是給故事志工的備課導讀，不是直接放給孩子看的。先帶大家認識書，再談怎麼進教室說。</aside>
+</section>
+
+<section id="bookinfo">
+<p class="eyebrow">認識這本書</p><h2>書籍小檔案</h2><table class="info"><tr><th>書名</th><th class="v">畢老師的蘋果</th></tr><tr><td class="lbl">原文書名</td><td>Mr. Peabody’s Apples</td></tr><tr><td class="lbl">文</td><td>瑪丹娜（Madonna）</td></tr><tr><td class="lbl">圖</td><td>羅倫（Loren Long）</td></tr><tr><td class="lbl">譯者</td><td>蔡依林</td></tr><tr><td class="lbl">出版</td><td>格林文化，2003 年初版，2020 年新版，40 頁</td></tr><tr><td class="lbl">適讀年段</td><td>國小中年級最合適，低年級可精簡文字</td></tr></table>
+<aside>中文版譯者是歌手蔡依林，孩子或家長可能會好奇，輕鬆帶過就好。這本書篇幅較長（40 頁），排時間時要多留一點。</aside>
+</section>
+
+<section id="author" class="alt paperbg">
+<p class="eyebrow">認識這本書</p><h2>作者與繪者</h2><div class="row"><div class="card"><p class="num">文</p><h3>瑪丹娜</h3><p>美國樂壇天后，也是繪本作者。第一本童書《英倫玫瑰》登上《紐約時報》兒童繪本暢銷榜榜首。</p></div><div class="card"><p class="num">圖</p><h3>羅倫</h3><p>美國得獎暢銷童書作繪者，主修藝術設計，也替《時代》等雜誌畫插圖。</p></div><div class="card"><p class="num">源</p><h3>寓言改編</h3><p>靈感來自喀巴拉教的寓言故事，想傳達「要用心，才能看清一切」。</p></div></div>
+<aside>介紹作者時重點放在「這是一則古老寓言改編的故事」，不必多談歌手身分，以免焦點跑掉。</aside>
+</section>
+
+<section id="story">
+<p class="eyebrow">認識這本書</p><h2>故事大綱</h2><div class="timeline"><div class="step first"><p class="min">1</p><h3>快樂的星期六</h3><p>畢老師是赫普村小學的歷史老師，每週六帶孩子打棒球。回家路上，他總會在傅先生的水果店拿一顆最紅最亮的蘋果。</p></div><div class="step"><p class="min">2</p><h3>謠言飛起來</h3><p>湯米看到畢老師拿了蘋果卻沒付錢，沒求證就說了出去。謠言傳遍全村，大家說畢老師是小偷，孩子們也不來打球了。</p></div><div class="step"><p class="min">3</p><h3>真相與羽毛</h3><p>原來畢老師每天早上就先付了錢。他沒有責罵湯米，而是請他做一件事，讓他明白說出口的話有多重。</p></div></div><div class="spacer"></div><p class="foot">「羽毛」那一段是全書的關鍵，志工務必事先讀熟。</p>
+<aside>結局：畢老師請湯米帶一個羽毛枕頭到空曠處割開，羽毛隨風飛散後，再請他把羽毛全部撿回來。湯米做不到，畢老師告訴他，謠言就像這些羽毛，一說出去就收不回來。細節請以原書為準。</aside>
+</section>
+
+<section id="characters" class="alt paperbg">
+<p class="eyebrow">認識這本書</p><h2>三個角色</h2><div class="row"><div class="card"><p class="tag">老師</p><h3>畢老師</h3><p>熱心的歷史老師兼棒球教練，被誤會成小偷，卻用寬容和智慧回應。</p></div><div class="card"><p class="tag">傳話的孩子</p><h3>湯米</h3><p>看到「蘋果事件」就說出去，沒想到一句話會傷人這麼深。</p></div><div class="card"><p class="tag">相信的孩子</p><h3>比利</h3><p>最喜歡棒球和畢老師，鼓起勇氣去告訴老師大家在說什麼。</p></div></div>
+<aside>可以請孩子想一想：你比較像湯米、比利，還是村子裡跟著相信謠言的人？沒有對錯，重點是誠實想一想。</aside>
+</section>
+
+<section id="theme" class="accent">
+<p class="eyebrow">讀懂這本書</p><p class="quote" style="width:1500px">說出口的話，就像隨風飛走的羽毛，<br>再也撿不回來。</p><div class="bar" style="margin-top:48px"></div><p class="lead">眼見不一定為真，要用心，才能看清一切。</p>
+<aside>本書主題是「言語的重量」與「求證」。不需要說教，羽毛的畫面本身就很有說服力。可以補一句：好的話也會像羽毛一樣飛很遠喔。</aside>
+</section>
+
+<section id="art">
+<p class="eyebrow">讀懂這本書</p><h2>翻頁時，帶孩子看這三件事</h2><div class="row"><div class="card"><p class="num">01</p><h3>前後的街景</h3><p>前半本大家揮手問好；謠言傳開後呢？比一比人們的表情和動作。</p></div><div class="card"><p class="num">02</p><h3>那顆蘋果</h3><p>每次蘋果出現都停一下，問孩子：你看到了什麼？你確定嗎？</p></div><div class="card"><p class="num">03</p><h3>漫天羽毛</h3><p>羽毛飛散的跨頁是全書最重要的畫面，翻慢一點，讓孩子看久一點。</p></div></div>
+<aside>羅倫的畫風寫實、溫暖，很適合讓孩子觀察人物表情的變化，用畫面來感受村子氣氛的改變。</aside>
+</section>
+
+<section id="flow" class="alt">
+<p class="eyebrow">帶進教室</p><h2>一堂 40 分鐘的建議流程</h2><div class="timeline"><div class="step first"><p class="min">5</p><p class="unit">分鐘</p><h3>暖身</h3><p>玩「傳話遊戲」，看一句話會怎麼變。</p></div><div class="step"><p class="min">15</p><p class="unit">分鐘</p><h3>說故事</h3><p>在「沒付錢」那頁停下，讓孩子猜。</p></div><div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>討論</h3><p>從理解、感受到生活連結，三層提問。</p></div><div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>延伸</h3><p>寫一根「好話羽毛」送給同學。</p></div></div>
+<aside>晨光時間只有 20–30 分鐘的話：暖身縮成 2 分鐘、討論挑 2–3 題、延伸活動改成口頭分享或留給導師。</aside>
+</section>
+
+<section id="warmup">
+<p class="eyebrow">帶進教室・暖身</p><h2>「傳話遊戲」</h2><div class="row"><div class="col"><p class="lead">悄悄傳一句話，最後一位大聲說出來，比對原句。</p><ul class="list"><li>例句：「小明今天帶了三顆紅蘋果來學校」</li><li>問：話怎麼變了？哪裡開始不一樣？</li><li>收：「今天的故事裡，也有一句話越傳越走樣……」</li></ul></div><div class="card side"><p class="tag">小道具（可選）</p><h3>一根羽毛</h3><p>拿出羽毛輕輕一吹：「這根羽毛，等一下會變得很重要。」</p></div></div>
+<aside>人數多時可分成兩排同時傳。例句避免用真實同學的名字，以免變成取笑。</aside>
+</section>
+
+<section id="telling" class="alt paperbg">
+<p class="eyebrow">帶進教室・說故事</p><h2>說故事的四個小技巧</h2><div class="row" style="margin-bottom:40px"><div class="card"><h3>語氣前後對比</h3><p>前半溫暖輕快；謠言傳開後放慢、語氣冷一點，讓孩子感覺氣氛變了。</p></div><div class="card"><h3>停在「沒付錢」</h3><p>問：「你覺得畢老師是小偷嗎？為什麼？」先不揭曉。</p></div></div><div class="row"><div class="card"><h3>真相前問一句</h3><p>「如果你是畢老師，被大家誤會，你會怎麼做？」</p></div><div class="card"><h3>羽毛頁慢慢翻</h3><p>讓孩子看著羽毛飛散，自己體會「收不回來」。</p></div></div>
+<aside>低年級可以把村民對話精簡；中年級照原文讀，把力氣放在停頓和提問。</aside>
+</section>
+
+<section id="questions">
+<p class="eyebrow">帶進教室・討論</p><h2>三層提問</h2><div class="row qgroup"><div class="card"><p class="tag">理解｜發生了什麼</p><p class="q">湯米看到了什麼？他做了什麼？</p><p class="q">為什麼孩子們不來打棒球了？</p><p class="q">羽毛為什麼撿不回來？</p></div><div class="card"><p class="tag">感受｜角色心裡想什麼</p><p class="q">被大家誤會的畢老師，心裡是什麼感覺？</p><p class="q">湯米知道真相後，心情怎麼樣？</p></div><div class="card"><p class="tag">連結｜回到自己身上</p><p class="q">你聽過別人說的「小道消息」嗎？</p><p class="q">聽到一件事時，你可以先做什麼？</p></div></div>
+<aside>最後一題可以帶出三個字：停（先別傳）、問（去問當事人）、想（這句話會傷人嗎）。</aside>
+</section>
+
+<section id="activity" class="alt paperbg">
+<p class="eyebrow">帶進教室・延伸活動</p><h2>好話羽毛，飛得更遠</h2><div class="row"><div class="card"><p class="tag">低年級</p><h3>畫一根好話羽毛</h3><p>在羽毛形狀的紙上，寫或畫一句想送給同學的好話，貼在教室。</p></div><div class="card"><p class="tag">中年級</p><h3>謠言急救站</h3><p>給一個情境（「聽說有人偷拿東西」），分組討論怎麼「停、問、想」。</p></div><div class="card"><p class="tag">全班</p><h3>羽毛實驗</h3><p>把碎紙片撒在地上，請孩子在 30 秒內撿回，體會「說出去容易，收回來難」。</p></div></div>
+<aside>羽毛實驗在教室內進行即可，結束後全班一起收乾淨，正好呼應主題。</aside>
+</section>
+
+<section id="reminders">
+<p class="eyebrow">志工提醒</p><h2>上場前，記得這四件事</h2><div class="row" style="margin-bottom:40px"><div class="card"><h3>不點名、不指認</h3><p>討論謠言時，別讓孩子說出班上真實的人和事。</p></div><div class="card"><h3>強調寬容</h3><p>畢老師沒有報復，而是教湯米明白，這份寬容也值得討論。</p></div></div><div class="row"><div class="card"><h3>預留時間</h3><p>全書 40 頁、文字較多，建議先順過一遍並計時。</p></div><div class="card"><h3>留意班級狀況</h3><p>若班上最近有謠言或排擠事件，先跟導師確認再上。</p></div></div>
+<aside>這本書很適合配合品德教育或人際溝通的主題，可以事先問導師班上的狀況。</aside>
+</section>
+
+<section id="closing" class="dark">
+<p class="eyebrow">結語</p><p class="quote" style="width:1300px">說話之前，先停一下：<br>這是真的嗎？會傷人嗎？</p><div class="spacer"></div><p class="foot">資料來源：博客來、城邦讀書花園、彰化縣閱讀資源網書籍介紹</p>
+<aside>收尾時可以把書闔上、停一秒，再說這句話。謝謝各位志工！</aside>
+</section>
+
+</div>
+<div id="notes"><b>講者備註</b><div id="notesText"></div></div>
+<div class="ctrl" id="bar">
+  <a href="../index.html">← 書架</a>
+  <button id="prev" aria-label="上一頁">‹</button>
+  <span class="count" id="count"></span>
+  <button id="next" aria-label="下一頁">›</button>
+  <button id="nbtn">備註</button>
+  <button id="fs">全螢幕</button>
+  <span class="sp"></span>
+  <span class="help">← → 翻頁・N 備註・F 全螢幕</span>
+</div>
+<script>
+const slides=[...document.querySelectorAll('#stage > section')];
+const stage=document.getElementById('stage');
+let i=0;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`;}
+function show(n,push){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+  const a=slides[i].querySelector('aside');
+  document.getElementById('notesText').textContent=a?a.textContent:'（本頁沒有備註）';
+  if(push!==false){try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+}
+function go(d){show(i+d)}
+document.getElementById('prev').onclick=()=>go(-1);
+document.getElementById('next').onclick=()=>go(1);
+const notes=document.getElementById('notes');
+document.getElementById('nbtn').onclick=()=>notes.classList.toggle('show');
+function fsToggle(){try{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}catch(e){}}
+document.getElementById('fs').onclick=fsToggle;
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(1)}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(-1)}
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='n'||e.key==='N')notes.classList.toggle('show');
+  else if(e.key==='f'||e.key==='F')fsToggle();
+});
+stage.addEventListener('click',e=>{const r=stage.getBoundingClientRect();go(e.clientX<r.left+r.width/3?-1:1)});
+let sx=null;
+addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);sx=null});
+let t;const bar=document.getElementById('bar');
+addEventListener('mousemove',()=>{bar.classList.remove('hide');clearTimeout(t);t=setTimeout(()=>bar.classList.add('hide'),2500)});
+addEventListener('resize',fit);
+fit();
+const h=parseInt(location.hash.slice(1));show(isNaN(h)?0:h-1,false);
+</script>
+</body>
+</html>
