@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《阿蓮娜、老鼠和巨貓》故事志工導讀簡報</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+html,body{margin:0;height:100%;background:#1b1714;overflow:hidden;font-family:'Noto Sans TC',system-ui,sans-serif}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#stage > section{position:absolute;inset:0;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden;display:none !important}
+#stage > section.on{display:flex !important}
+#stage > section aside{display:none}
+.ctrl{position:fixed;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(20,16,14,.82);color:#eee;font-size:14px;z-index:5;transition:opacity .3s}
+.ctrl.hide{opacity:0}
+.ctrl:hover{opacity:1}
+.ctrl a,.ctrl button{font:inherit;color:#eee;background:rgba(255,255,255,.1);border:0;border-radius:6px;padding:6px 12px;cursor:pointer;text-decoration:none}
+.ctrl button:hover,.ctrl a:hover{background:rgba(255,255,255,.22)}
+.ctrl .count{min-width:64px;text-align:center}
+.ctrl .sp{flex:1}
+#notes{position:fixed;left:0;right:0;bottom:48px;max-height:38vh;overflow:auto;background:#FBF8F1;color:#2B2420;padding:16px 20px;font-size:17px;line-height:1.7;border-top:4px solid #E3B23C;display:none;z-index:4}
+#notes.show{display:block}
+#notes b{display:block;font-size:13px;color:#8A6A50;margin-bottom:4px}
+.help{color:#aaa;font-size:12px}
+@media (max-width:700px){.help{display:none}}
+</style>
+<style>
+:root {
+  --ink: #2B2420;
+  --paper: #F6F1E6;
+  --paper2: #EADFC8;
+  --brick: #A8432F;
+  --cheese: #E3B23C;
+  --soft: #5A4E45;
+  --softdark: #D9CDB8;
+}
+#stage > section {
+  padding: 128px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+#stage > section.alt { background: var(--paper2); }
+#stage > section.dark { background: var(--ink); color: var(--paper); }
+#stage > section.accent { background: var(--brick); color: var(--paper); }
+
+h1, h2, h3 { font-family: 'Noto Serif TC', Georgia, serif; margin: 0; }
+h1 { font-size: 112px; font-weight: 900; line-height: 1.15; }
+h2 { font-size: 64px; font-weight: 700; line-height: 1.2; margin-bottom: 48px; }
+h3 { font-size: 40px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+p { margin: 0; font-size: 30px; line-height: 1.6; color: var(--soft); }
+#stage > section.dark p, #stage > section.accent p { color: var(--softdark); }
+#stage > section.accent p { color: #F6E9DA; }
+
+.eyebrow { font-size: 24px; font-weight: 700; letter-spacing: 4px; color: var(--brick); margin-bottom: 20px; }
+#stage > section.dark .eyebrow { color: var(--cheese); }
+#stage > section.accent .eyebrow { color: #F6E9DA; }
+
+.lead { font-size: 40px; line-height: 1.5; color: var(--ink); }
+#stage > section.dark .lead { color: var(--paper); }
+
+.row { display: flex; flex-direction: row; gap: 40px; }
+.col { display: flex; flex-direction: column; gap: 24px; flex: 1; }
+.card { flex: 1; background: var(--paper); border: 3px solid var(--ink); border-radius: 8px; padding: 44px; }
+#stage > section.paperbg .card { background: var(--paper2); border-color: var(--paper2); }
+.card .tag { font-size: 24px; font-weight: 700; color: var(--brick); margin-bottom: 12px; }
+.card p { font-size: 28px; }
+
+.num { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 900; color: var(--brick); line-height: 1; margin-bottom: 16px; }
+
+ul.list { margin: 0; padding-left: 40px; }
+ul.list li { font-size: 30px; line-height: 1.6; color: var(--soft); margin-bottom: 14px; }
+#stage > section.dark ul.list li { color: var(--softdark); }
+
+table.info { border-collapse: collapse; width: 100%; }
+table.info th, table.info td { font-size: 30px; text-align: left; padding: 18px 24px; border-bottom: 2px solid #CDBFA5; }
+table.info th { color: var(--brick); font-weight: 700; width: 300px; }
+table.info td { color: var(--ink); }
+
+.timeline { display: flex; flex-direction: row; gap: 0; }
+.step { flex: 1; padding: 40px 36px; border: 3px solid var(--ink); border-left: none; background: var(--paper); }
+.step.first { border-left: 3px solid var(--ink); }
+.step .min { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 900; color: var(--brick); line-height: 1; }
+.step .unit { font-size: 24px; color: var(--soft); margin-bottom: 20px; }
+.step p { font-size: 28px; }
+
+.quote { font-family: 'Noto Serif TC', Georgia, serif; font-size: 64px; font-weight: 700; line-height: 1.4; }
+.bar { width: 120px; height: 8px; background: var(--cheese); margin-bottom: 40px; }
+.spacer { flex: 1; }
+.foot { font-size: 24px; color: var(--soft); }
+#stage > section.dark .foot { color: var(--softdark); }
+
+.qgroup .card { border-top: 12px solid var(--brick); }
+.qgroup .card p { font-size: 28px; margin-bottom: 18px; color: var(--ink); }
+
+/* motion */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+.card, .step { animation: rise 0.5s ease-out both; }
+.row > .card:nth-child(2), .timeline > .step:nth-child(2) { animation-delay: 0.12s; }
+.row > .card:nth-child(3), .timeline > .step:nth-child(3) { animation-delay: 0.24s; }
+.timeline > .step:nth-child(4) { animation-delay: 0.36s; }
+
+/* cat that grows, cover + theme */
+.catsvg { position: absolute; }
+
+</style>
+</head>
+<body>
+<div id="stage">
+<section id="cover" class="dark">
+<p class="eyebrow">國小故事志工・導讀簡報</p>
+<h1>阿蓮娜、<br>老鼠和巨貓</h1>
+<div class="bar" style="margin-top:48px"></div>
+<p class="lead" style="width:1000px">害怕會讓貓越長越大──<br>那要怎麼讓牠變回原來的樣子？</p>
+<div class="spacer"></div>
+<p class="foot">文．圖｜蘇西．博達爾（Susi Bohdal）　譯｜張莉莉　格林文化</p>
+<svg class="catsvg" aria-label="三隻由小到大的貓剪影，象徵越怕越大的巨貓" style="right:128px;top:240px;width:560px;height:560px" viewBox="0 0 200 200"><g fill="#E3B23C"><path d="M20 180 v-22 l5 -8 l4 8 h10 l4 -8 l5 8 v22 z" opacity="0.5"/><path d="M60 180 v-44 l10 -16 l8 16 h20 l8 -16 l10 16 v44 z" opacity="0.75"/><path d="M118 180 v-80 l16 -28 l14 28 h22 l14 -28 l16 28 v80 z"/></g><g fill="#2B2420"><circle cx="146" cy="120" r="5"/><circle cx="174" cy="120" r="5"/></g></svg>
+<aside>開場：這份簡報是給故事志工的備課導讀，不是直接放給孩子看的。先帶大家認識書，再談怎麼進教室說。</aside>
+</section>
+
+<section id="bookinfo">
+<p class="eyebrow">認識這本書</p>
+<h2>書籍小檔案</h2>
+<table class="info">
+<tr><th>書名</th><td>阿蓮娜、老鼠和巨貓</td></tr>
+<tr><td style="color:#A8432F;font-weight:700">原文書名</td><td>Selena, Pumpernickel und die Katze Flora</td></tr>
+<tr><td style="color:#A8432F;font-weight:700">文．圖</td><td>蘇西．博達爾（Susi Bohdal）</td></tr>
+<tr><td style="color:#A8432F;font-weight:700">譯者</td><td>張莉莉</td></tr>
+<tr><td style="color:#A8432F;font-weight:700">出版</td><td>格林文化「國際大獎繪本」書系，2023 年 6 月新版，32 頁</td></tr>
+<tr><td style="color:#A8432F;font-weight:700">適讀年齡</td><td>出版社建議 4–9 歲；國小低、中年級都合適</td></tr>
+</table>
+<aside>原文書名裡的 Pumpernickel 是德國的裸麥黑麵包，就是小老鼠「黑麵包」的名字由來；貓在原文叫 Flora，中文版譯為「拉拉」。這本書也曾被選入文化部中小學生讀物選介的「國際五大獎繪本」套書。</aside>
+</section>
+
+<section id="author" class="alt paperbg">
+<p class="eyebrow">認識這本書</p>
+<h2>作繪者：蘇西．博達爾</h2>
+<div class="row">
+<div class="card"><p class="num">1951</p><h3>生於奧地利維也納</h3><p>五歲開始學畫，大學讀應用藝術、主修廣告設計，1974 年畢業後成為自由創作畫家。</p></div>
+<div class="card"><p class="num">蝕刻</p><h3>找到最適合她的媒材</h3><p>經教授介紹接觸蝕刻版畫，這本書從頭到尾都用蝕刻版畫完成。</p></div>
+<div class="card"><p class="num">金徽獎</p><h3>布拉迪斯國際插畫雙年展</h3><p>她相信想像力最重要，希望用書激發孩子自己的想像力和創造力。</p></div>
+</div>
+<aside>可以跟孩子簡單說：這位畫家是「用針在金屬板上刻線條」再印出來的，所以畫面裡有好多細細的線。</aside>
+</section>
+
+<section id="story">
+<p class="eyebrow">認識這本書</p>
+<h2>故事大綱</h2>
+<div class="row" style="gap:0">
+<div class="step first"><p class="min">1</p><h3>交換</h3><p>愛幻想的阿蓮娜遇見會說故事的小老鼠黑麵包。她每天用一塊新鮮乾酪，換黑麵包一個新故事。</p></div>
+<div class="step"><p class="min">2</p><h3>追趕</h3><p>城裡的野貓拉拉盯上黑麵包。阿蓮娜為了保護牠，被拉拉追著滿街跑。</p></div>
+<div class="step"><p class="min">3</p><h3>變大</h3><p>阿蓮娜越害怕，拉拉就變得越巨大。走投無路的她，要怎麼對抗巨貓？</p></div>
+</div>
+<div class="spacer"></div>
+<p class="foot">結局請志工事先讀熟原書；說故事時，留給孩子自己發現。</p>
+<aside>這頁只講到故事的轉折點，刻意不寫出結局。志工備課時一定要先完整讀過一遍，特別留意最後阿蓮娜做了什麼、拉拉有什麼改變，這是之後提問的關鍵。</aside>
+</section>
+
+<section id="characters" class="alt paperbg">
+<p class="eyebrow">認識這本書</p>
+<h2>三個角色</h2>
+<div class="row">
+<div class="card"><p class="tag">小女孩</p><h3>阿蓮娜</h3><p>愛幻想、喜歡聽故事。她願意為朋友挺身而出，卻也會害怕。</p></div>
+<div class="card"><p class="tag">小老鼠</p><h3>黑麵包</h3><p>很會說故事，用故事換乾酪。牠是阿蓮娜想守護的朋友。</p></div>
+<div class="card"><p class="tag">野貓</p><h3>拉拉</h3><p>想抓黑麵包。阿蓮娜越害怕，牠就變得越大──牠也是「恐懼」的化身。</p></div>
+</div>
+<aside>可以先問孩子：如果你是黑麵包，你會說什麼故事來換乾酪？用角色把孩子拉進故事。</aside>
+</section>
+
+<section id="theme" class="accent">
+<p class="eyebrow">讀懂這本書</p>
+<p class="quote" style="color:#F6F1E6;width:1400px">恐懼會隨著害怕越滾越大；<br>真正的勇敢，是害怕時<br>還能挺身而出。</p>
+<div class="bar" style="margin-top:48px"></div>
+<p class="lead" style="color:#F6E9DA">當你有想守護的人，就能從弱小變強大。</p>
+<aside>這是出版社對本書主題的說法，也是整堂課想帶給孩子的一句話。提醒孩子：勇敢不是「不會怕」，而是怕了還願意面對。另一條主線是友誼：阿蓮娜和黑麵包之間真誠的交換與陪伴。</aside>
+</section>
+
+<section id="art">
+<p class="eyebrow">讀懂這本書</p>
+<h2>翻頁時，帶孩子看這三件事</h2>
+<div class="row">
+<div class="card"><p class="num">01</p><h3>細細的刻線</h3><p>整本書都是蝕刻版畫。請孩子靠近看線條怎麼排出明暗和毛茸茸的貓毛。</p></div>
+<div class="card"><p class="num">02</p><h3>拉拉的大小</h3><p>每翻一頁，比一比貓和阿蓮娜誰大。大小變化就是阿蓮娜心裡害怕的程度。</p></div>
+<div class="card"><p class="num">03</p><h3>鏡頭的遠近</h3><p>畫家常換角度：有時從高處看街道，有時貼近角色。問孩子：這頁像從哪裡看？</p></div>
+</div>
+<aside>出版社特別提到本書有豐富的「鏡頭語言」。不必講術語，只要問「你覺得畫家站在哪裡畫這一頁？」孩子就能感受到。</aside>
+</section>
+
+<section id="flow" class="alt">
+<p class="eyebrow">帶進教室</p>
+<h2>一堂 40 分鐘的建議流程</h2>
+<div class="timeline">
+<div class="step first"><p class="min">5</p><p class="unit">分鐘</p><h3>暖身</h3><p>聊「害怕」，用雙手比出怕的大小。</p></div>
+<div class="step"><p class="min">15</p><p class="unit">分鐘</p><h3>說故事</h3><p>邊說邊停，讓孩子預測、比較貓的大小。</p></div>
+<div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>討論</h3><p>從理解、感受到生活連結，三層提問。</p></div>
+<div class="step"><p class="min">10</p><p class="unit">分鐘</p><h3>延伸</h3><p>畫出「我的巨貓」，再想辦法讓牠變小。</p></div>
+</div>
+<aside>晨光時間只有 20–30 分鐘的話：暖身縮成 2 分鐘、討論挑 2–3 題、延伸活動改成口頭分享或留給導師。</aside>
+</section>
+
+<section id="warmup">
+<p class="eyebrow">帶進教室・暖身</p>
+<h2>「你的害怕有多大？」</h2>
+<div class="row">
+<div class="col">
+<p class="lead">請孩子想一件會讓自己害怕的事，用雙手比出它有多大。</p>
+<ul class="list">
+<li>例：打雷、黑漆漆的走廊、上台講話、大狗</li>
+<li>問：越想它的時候，它會變大還是變小？</li>
+<li>收：「今天的故事裡，有一隻會越變越大的貓……」</li>
+</ul>
+</div>
+<div class="card" style="flex:0 0 520px;background:#EADFC8;border-color:#EADFC8"><p class="tag">小道具（可選）</p><h3>一小塊乾酪</h3><p>拿出乾酪或乾酪圖卡：「有人用這個換故事喔！」立刻勾起好奇心。</p></div>
+</div>
+<aside>暖身不需要每個孩子都發言，比手勢就好，讓害羞的孩子也能參與。不要逼孩子說出真正深層的恐懼。</aside>
+</section>
+
+<section id="telling" class="alt paperbg">
+<p class="eyebrow">帶進教室・說故事</p>
+<h2>說故事的四個小技巧</h2>
+<div class="row" style="margin-bottom:40px">
+<div class="card"><h3>聲音跟著貓長大</h3><p>拉拉越大，語速放慢、聲音放低；阿蓮娜害怕時，聲音可以小一點、急一點。</p></div>
+<div class="card"><h3>翻頁前停一下</h3><p>「你猜下一頁拉拉會變多大？」讓孩子預測，再翻頁揭曉。</p></div>
+</div>
+<div class="row">
+<div class="card"><h3>結局前問一句</h3><p>「如果你是阿蓮娜，現在會怎麼做？」聽完幾個答案，再讀結局。</p></div>
+<div class="card"><h3>讓畫面說話</h3><p>蝕刻畫很細，翻慢一點，把書轉向全班，讓後排也看得到。</p></div>
+</div>
+<aside>這本書文字不算少，低年級可以適度精簡；中年級可以照原文讀，把節奏留在翻頁和停頓上。</aside>
+</section>
+
+<section id="questions">
+<p class="eyebrow">帶進教室・討論</p>
+<h2>三層提問</h2>
+<div class="row qgroup">
+<div class="card"><p class="tag">理解｜故事裡發生了什麼</p><p>阿蓮娜用什麼跟黑麵包交換故事？</p><p>拉拉為什麼會越變越大？</p><p>最後拉拉怎麼了？</p></div>
+<div class="card"><p class="tag">感受｜角色心裡想什麼</p><p>被巨貓追的時候，阿蓮娜心裡在想什麼？</p><p>她明明很怕，為什麼不丟下黑麵包？</p></div>
+<div class="card"><p class="tag">連結｜回到自己身上</p><p>你有沒有一件「越想越大」的事？</p><p>你想保護誰？為了他，你願意勇敢一次嗎？</p></div>
+</div>
+<aside>不必每題都問，依時間挑 2–3 題，最好三層各一題。沒有標準答案，孩子說「我還是會怕」也是很好的回答，可以接著說：怕也沒關係，阿蓮娜也很怕。</aside>
+</section>
+
+<section id="activity" class="alt paperbg">
+<p class="eyebrow">帶進教室・延伸活動</p>
+<h2>「我的巨貓」縮小術</h2>
+<div class="row">
+<div class="card"><p class="tag">低年級</p><h3>畫一隻巨貓，再畫一隻小貓</h3><p>左邊畫「我害怕的東西」變成巨貓的樣子；右邊畫它被我變小後的樣子。</p></div>
+<div class="card"><p class="tag">中年級</p><h3>寫一句勇氣咒語</h3><p>畫出巨貓後，旁邊寫一句讓自己勇敢的話，例如「我怕，但我可以試試看」。</p></div>
+<div class="card"><p class="tag">全班</p><h3>黑麵包故事交換站</h3><p>兩兩一組，用一張「乾酪卡」交換對方說一個 30 秒的小故事。</p></div>
+</div>
+<aside>需要的材料：A4 紙對折、蠟筆或色鉛筆；「乾酪卡」用黃色紙剪成三角形即可。時間不夠時，選一個活動交給班導師延續。</aside>
+</section>
+
+<section id="reminders">
+<p class="eyebrow">志工提醒</p>
+<h2>上場前，記得這四件事</h2>
+<div class="row" style="margin-bottom:40px">
+<div class="card"><h3>先讀熟結局</h3><p>至少完整讀過兩次，確認阿蓮娜最後的行動，提問才接得住。</p></div>
+<div class="card"><h3>勇敢不等於不怕</h3><p>別說「不要怕」，改說「怕了也可以勇敢」，接納孩子的情緒。</p></div>
+</div>
+<div class="row">
+<div class="card"><h3>留意孩子的反應</h3><p>若有孩子分享較沉重的恐懼，溫和接住，課後轉告導師。</p></div>
+<div class="card"><h3>讓書本當主角</h3><p>這本書的畫很耐看，少一點說教，多一點一起看畫。</p></div>
+</div>
+<aside>本書主題觸及「恐懼」，多數孩子會說打雷、鬼、黑暗等，但偶爾會有孩子說出家庭或霸凌相關的事。志工不必當下處理，記下來、私下告訴導師即可。</aside>
+</section>
+
+<section id="closing" class="dark">
+<p class="eyebrow">結語</p>
+<p class="quote" style="width:1300px;color:#F6F1E6">每個孩子心裡都有一隻拉拉。<br>我們要做的，是陪他們找到<br>讓牠變小的勇氣。</p>
+<div class="spacer"></div>
+<p class="foot">資料來源：格林文化、博客來書籍介紹；文化部中小學生讀物選介</p>
+<svg class="catsvg" aria-label="一隻縮小的貓剪影" style="right:160px;bottom:160px;width:200px;height:200px" viewBox="0 0 200 200"><path fill="#E3B23C" d="M60 180 v-80 l16 -28 l14 28 h22 l14 -28 l16 28 v80 z"/><g fill="#2B2420"><circle cx="88" cy="120" r="5"/><circle cx="116" cy="120" r="5"/></g></svg>
+<aside>收尾時可以把書闔上、停一秒，再說這句話。謝謝各位志工！</aside>
+</section>
+
+</div>
+<div id="notes"><b>講者備註</b><div id="notesText"></div></div>
+<div class="ctrl" id="bar">
+  <a href="../index.html">← 書架</a>
+  <button id="prev" aria-label="上一頁">‹</button>
+  <span class="count" id="count"></span>
+  <button id="next" aria-label="下一頁">›</button>
+  <button id="nbtn">備註</button>
+  <button id="fs">全螢幕</button>
+  <span class="sp"></span>
+  <span class="help">← → 翻頁・N 備註・F 全螢幕</span>
+</div>
+<script>
+const slides=[...document.querySelectorAll('#stage > section')];
+const stage=document.getElementById('stage');
+let i=0;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`;}
+function show(n,push){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+  const a=slides[i].querySelector('aside');
+  document.getElementById('notesText').textContent=a?a.textContent:'（本頁沒有備註）';
+  if(push!==false){try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+}
+function go(d){show(i+d)}
+document.getElementById('prev').onclick=()=>go(-1);
+document.getElementById('next').onclick=()=>go(1);
+const notes=document.getElementById('notes');
+document.getElementById('nbtn').onclick=()=>notes.classList.toggle('show');
+function fsToggle(){try{if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}catch(e){}}
+document.getElementById('fs').onclick=fsToggle;
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(1)}
+  else if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(-1)}
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='n'||e.key==='N')notes.classList.toggle('show');
+  else if(e.key==='f'||e.key==='F')fsToggle();
+});
+stage.addEventListener('click',e=>{const r=stage.getBoundingClientRect();go(e.clientX<r.left+r.width/3?-1:1)});
+let sx=null;
+addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)go(dx<0?1:-1);sx=null});
+let t;const bar=document.getElementById('bar');
+addEventListener('mousemove',()=>{bar.classList.remove('hide');clearTimeout(t);t=setTimeout(()=>bar.classList.add('hide'),2500)});
+addEventListener('resize',fit);
+fit();
+const h=parseInt(location.hash.slice(1));show(isNaN(h)?0:h-1,false);
+</script>
+</body>
+</html>
