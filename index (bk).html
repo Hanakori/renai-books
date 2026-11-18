@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>故事志工備課書架</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#F5EFE3; --ink:#2B2420; --soft:#5A4E45; --wood:#8A5A3B; --wood2:#6E4529; --line:#DCCFB8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans TC',system-ui,sans-serif;line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+  header .eyebrow{font-size:14px;font-weight:700;letter-spacing:.2em;color:#A8432F;margin:0 0 8px}
+  header h1{font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(32px,6vw,52px);margin:0 0 12px;line-height:1.2}
+  header p{margin:0;color:var(--soft);font-size:17px;max-width:640px}
+
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 20px}
+  .filters button{font:inherit;font-size:15px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:6px 16px;border-radius:999px;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+  /* shelf */
+  .shelf{position:relative;padding:28px 28px 0;background:linear-gradient(#EFE5D3,#E6D9C2);border-radius:10px 10px 0 0;border:1px solid var(--line);border-bottom:none}
+  .books{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:end}
+  .plank{height:22px;background:linear-gradient(var(--wood),var(--wood2));border-radius:0 0 8px 8px;box-shadow:0 10px 18px -10px rgba(60,35,20,.6)}
+  .book{all:unset;cursor:pointer;display:block;position:relative;aspect-ratio:3/4;border-radius:4px 10px 10px 4px;padding:18px 16px 16px 26px;color:var(--fg);background:var(--c);
+        box-shadow:inset 8px 0 0 rgba(0,0,0,.18), 0 6px 14px -6px rgba(0,0,0,.45);transition:transform .2s ease, opacity .2s ease, filter .2s}
+  .book:hover,.book:focus-visible{transform:translateY(-10px) rotate(-1deg)}
+  .book:focus-visible{outline:3px solid #E3B23C;outline-offset:4px}
+  .book[aria-current="true"]{transform:translateY(-14px)}
+  .book.dim{opacity:.28;filter:grayscale(.6)}
+  .book{display:flex;flex-direction:column;justify-content:flex-start}
+  .book .t{font-family:'Noto Serif TC',serif;font-weight:900;font-size:clamp(17px,2.3vw,24px);line-height:1.3;display:block;position:relative;z-index:1}
+  .book .a{font-size:12px;opacity:.85;position:absolute;left:26px;right:14px;bottom:14px;line-height:1.4}
+  .book svg{position:absolute;right:10px;bottom:40px;width:46%;height:auto;opacity:.95}
+  .book .badge{position:absolute;top:-10px;right:-6px;background:#E3B23C;color:#2B2420;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px}
+
+  /* detail */
+  .detail{margin-top:36px;background:#FBF8F1;border:1px solid var(--line);border-radius:12px;padding:32px;display:grid;grid-template-columns:1fr 280px;gap:32px}
+  .detail h2{font-family:'Noto Serif TC',serif;font-size:32px;margin:0 0 6px;line-height:1.25}
+  .detail .by{color:var(--soft);font-size:15px;margin:0 0 18px}
+  .detail .sum{font-size:17px;margin:0 0 18px}
+  .detail .theme{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;border-left:5px solid var(--accent);padding:4px 0 4px 16px;margin:0 0 20px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tags span{font-size:13px;background:#EFE6D4;padding:3px 10px;border-radius:999px;color:var(--soft)}
+  .side dl{margin:0 0 20px;font-size:15px}
+  .side dt{color:var(--soft);font-size:13px}
+  .side dd{margin:0 0 10px;font-weight:500}
+  .open{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:17px;padding:14px 18px;border-radius:8px;background:var(--accent);color:#FBF8F1}
+  .open:hover{filter:brightness(1.1)}
+  .note{margin-top:12px;font-size:14px;color:#8A3B22;background:#F6E3D6;border-radius:8px;padding:10px 12px}
+  .pair{margin-top:12px;font-size:14px;color:var(--soft)}
+  .pair a{color:inherit;cursor:pointer;text-decoration:underline}
+
+  .howto{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .howto div{border-top:3px solid var(--ink);padding-top:12px}
+  .howto b{font-family:'Noto Serif TC',serif;font-size:18px;display:block;margin-bottom:4px}
+  .howto p{margin:0;font-size:15px;color:var(--soft)}
+  footer{margin-top:40px;font-size:13px;color:var(--soft)}
+
+  @media (max-width:760px){
+    .books{grid-template-columns:repeat(2,1fr);row-gap:28px}
+    .detail{grid-template-columns:1fr;padding:22px}
+    .howto{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){.book{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">國小故事志工・備課書架</p>
+    <h1>這學期的四本故事書</h1>
+    <p>點一本書，看故事重點和適合年段，再打開導讀簡報備課。每份簡報都有說故事流程、提問和延伸活動，講者備註裡有給志工的提醒。</p>
+  </header>
+
+  <div class="filters" role="group" aria-label="依主題篩選">
+    <button aria-pressed="true" data-f="all">全部</button>
+    <button aria-pressed="false" data-f="勇氣">勇氣與害怕</button>
+    <button aria-pressed="false" data-f="人際">人際與說話</button>
+    <button aria-pressed="false" data-f="家庭">家庭與生活</button>
+  </div>
+
+  <div class="shelf"><div class="books" id="books"></div></div>
+  <div class="plank" aria-hidden="true"></div>
+
+  <section class="detail" id="detail" aria-live="polite"></section>
+
+  <div class="howto">
+    <div><b>1．先讀原書</b><p>簡報只是備課地圖，結局和細節請以原書為準，至少完整讀過兩次。</p></div>
+    <div><b>2．看講者備註</b><p>每頁下方的備註寫了提醒和延伸說法，上場前花五分鐘瀏覽。</p></div>
+    <div><b>3．依時間取捨</b><p>簡報以 40 分鐘設計；晨光時間較短時，挑 2–3 題討論即可。</p></div>
+  </div>
+
+  <footer>書籍資料整理自出版社與網路書店介紹。</footer>
+</div>
+
+<script>
+const BOOKS = [
+  { id:"alena", title:"阿蓮娜、老鼠和巨貓", by:"蘇西．博達爾 文．圖｜張莉莉 譯｜格林文化",
+    short:"蘇西．博達爾", c:"#2B2420", fg:"#F6F1E6", accent:"#A8432F",
+    sum:"愛幻想的阿蓮娜用乾酪跟小老鼠黑麵包交換故事。野貓拉拉盯上黑麵包，阿蓮娜越害怕，拉拉就變得越巨大……",
+    theme:"真正的勇敢，是害怕時還能挺身而出。",
+    tags:["勇氣","恐懼","友誼","蝕刻版畫"], cat:["勇氣"],
+    age:"國小低、中年級", pages:"32 頁", url:"https://claude.ai/artifact/GP8mYKtSky8KztvNryY464",
+    pair:"pumpkin", pairText:"同樣談「面對害怕」，可搭配《南瓜掌心雷》",
+    svg:'<svg viewBox="0 0 200 200" aria-hidden="true"><path fill="#E3B23C" d="M118 180 v-80 l16 -28 l14 28 h22 l14 -28 l16 28 v80 z"/><path fill="#E3B23C" opacity=".6" d="M60 180 v-44 l10 -16 l8 16 h20 l8 -16 l10 16 v44 z"/></svg>' },
+  { id:"apple", title:"畢老師的蘋果", by:"瑪丹娜 文｜羅倫 圖｜蔡依林 譯｜格林文化",
+    short:"瑪丹娜．羅倫", c:"#23302B", fg:"#F7F2E8", accent:"#A8322A",
+    sum:"人人喜愛的畢老師，被看見從水果店拿蘋果沒付錢。謠言像羽毛一樣飛遍赫普村，大家都說他是小偷……",
+    theme:"說出口的話像羽毛，飛出去就撿不回來。",
+    tags:["謠言","說話的力量","求證","寬容"], cat:["人際"],
+    age:"國小中年級", pages:"40 頁", url:"https://claude.ai/artifact/AYWGXeZn2oqHeb6yDx9gve",
+    svg:'<svg viewBox="0 0 200 200" aria-hidden="true"><path fill="#C8463C" d="M100 62c-18-14-58-10-62 30-4 40 26 78 46 78 8 0 10-4 16-4s8 4 16 4c20 0 50-38 46-78-4-40-44-44-62-30z"/><path fill="#7FA866" d="M104 60c4-18 18-28 34-28-2 16-16 28-34 28z"/></svg>' },
+  { id:"fastslow", title:"快一點慢一點", by:"張輝誠 文｜許匡匡 圖｜親子天下",
+    short:"張輝誠．許匡匡", c:"#1E2A3A", fg:"#F4F1EA", accent:"#2C6A87",
+    sum:"城市的爸媽總說「快一點」，鄉下的爺爺奶奶總說「慢一點」。夾在中間的小男孩，要怎麼找到自己的節奏？",
+    theme:"快和慢沒有對錯，找到自己的節奏最重要。",
+    tags:["生活節奏","家庭","祖孫","學思達"], cat:["家庭"],
+    age:"國小低、中年級", pages:"學思達小學堂 5", url:"https://claude.ai/artifact/VQypacYkWk4evTdmfLvDmZ",
+    svg:'<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="90" cy="100" r="56" fill="#F2A541"/><circle cx="90" cy="100" r="46" fill="#F4F1EA"/><path d="M90 100 V66 M90 100 L116 112" stroke="#1E2A3A" stroke-width="7" stroke-linecap="round"/></svg>' },
+  { id:"pumpkin", title:"南瓜掌心雷", by:"英格麗特．奧斯特海倫 文｜克莉絲塔．溫茨內爾 圖｜陳木城 譯｜阿爾發",
+    short:"奧斯特海倫．溫茨內爾", c:"#2A2238", fg:"#F8F2E7", accent:"#9E4A12",
+    sum:"膽小的丁丁怕老師、不敢跟大孩子說話。有一天他夢見仙子送他一個看不到、摸不到，卻會保護他的「南瓜掌心雷」……",
+    theme:"相信自己做得到，就是最厲害的魔法。",
+    tags:["勇氣","想像力","校園生活"], cat:["勇氣","人際"],
+    age:"國小低年級", pages:"已絕版", url:"https://claude.ai/artifact/H7onPdQR8Mfxt79pbeTTFt",
+    note:"本書已絕版，請至少提前兩週向圖書館預約借閱。", badge:"需借閱",
+    pair:"alena", pairText:"同樣談「面對害怕」，可搭配《阿蓮娜、老鼠和巨貓》",
+    svg:'<svg viewBox="0 0 200 200" aria-hidden="true"><path fill="#F4B942" d="M100 50c-30-6-70 6-72 46-2 40 30 58 72 58s74-18 72-58c-2-40-42-52-72-46z"/><g fill="#2A2238"><circle cx="78" cy="94" r="8"/><circle cx="122" cy="94" r="8"/></g><path d="M78 118 q22 18 44 0" stroke="#2A2238" stroke-width="6" fill="none"/></svg>' }
+];
+
+const booksEl = document.getElementById('books');
+const detail = document.getElementById('detail');
+let current = BOOKS[0].id, filter = 'all';
+try { const h = location.hash.slice(1); if (BOOKS.some(b=>b.id===h)) current = h; } catch(e){}
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+function renderShelf(){
+  booksEl.innerHTML = BOOKS.map(b => `
+    <button class="book${filter!=='all' && !b.cat.includes(filter) ? ' dim':''}" data-id="${b.id}"
+      style="--c:${b.c};--fg:${b.fg}" aria-current="${b.id===current}" aria-label="《${esc(b.title)}》">
+      ${b.badge?`<span class="badge">${esc(b.badge)}</span>`:''}
+      <span class="t">${esc(b.title)}</span>${b.svg}<span class="a">${esc(b.short)}</span>
+    </button>`).join('');
+}
+function renderDetail(){
+  const b = BOOKS.find(x=>x.id===current);
+  detail.style.setProperty('--accent', b.accent);
+  const pair = b.pair ? `<p class="pair">${esc(b.pairText)}　<a data-go="${b.pair}">看這本 →</a></p>` : '';
+  detail.innerHTML = `
+    <div>
+      <h2>《${esc(b.title)}》</h2>
+      <p class="by">${esc(b.by)}</p>
+      <p class="sum">${esc(b.sum)}</p>
+      <p class="theme">${esc(b.theme)}</p>
+      <div class="tags">${b.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>
+      ${pair}
+    </div>
+    <div class="side">
+      <dl><dt>建議年段</dt><dd>${esc(b.age)}</dd><dt>備註</dt><dd>${esc(b.pages)}</dd><dt>簡報內容</dt><dd>14 頁：認識書、讀懂書、帶進教室、志工提醒</dd></dl>
+      <a class="open" href="${b.url}" target="_blank" rel="noopener">打開導讀簡報</a>
+      ${b.note?`<p class="note">${esc(b.note)}</p>`:''}
+    </div>`;
+}
+function select(id){ current=id; renderShelf(); renderDetail(); try{ history.replaceState(null,'','#'+id);}catch(e){ try{location.hash=id}catch(_){}} }
+
+booksEl.addEventListener('click', e => { const b = e.target.closest('.book'); if (b) select(b.dataset.id); });
+detail.addEventListener('click', e => { const a = e.target.closest('[data-go]'); if (a) { select(a.dataset.go); detail.scrollIntoView({behavior:'smooth',block:'nearest'}); } });
+document.querySelector('.filters').addEventListener('click', e => {
+  const btn = e.target.closest('button'); if (!btn) return;
+  filter = btn.dataset.f;
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed', x===btn));
+  const cur = BOOKS.find(b=>b.id===current);
+  if (filter!=='all' && !cur.cat.includes(filter)) current = BOOKS.find(b=>b.cat.includes(filter)).id;
+  renderShelf(); renderDetail();
+});
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (BOOKS.some(b=>b.id===h) && h!==current) select(h); });
+renderShelf(); renderDetail();
+</script>
+</body>
+</html>
